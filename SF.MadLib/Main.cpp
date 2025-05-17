@@ -1,18 +1,17 @@
-
+//Servando Fernandez
 // Mad Lib
-// Servando Fernandez
-
 #include <iostream>
 #include <conio.h>
+#include <string>
 
 using namespace std;
 
-int main()
-{
-	struct Entry {
-		string type;
-		string input;
-	};
+int main() {
+    struct Entry {
+        string type;
+        string input;
+    };
+
     Entry entries[] = {
         {"place", ""},
         {"adjective", ""},
@@ -23,22 +22,34 @@ int main()
         {"place", ""},
         {"Person or animal", ""},
         {"action towards someone", ""},
-        {"item",""},
+        {"item", ""},
         {"animal or object", ""},
         {"anything", ""},
         {"room in house", ""},
         {"title of person or animal", ""},
-        {"name", ""},
-        // Add more entries as needed
+        {"name", ""}
     };
-    
-    cout << "1: Enter a place " << entries[0].type << ": ";
-    cin >> entries[0].input;
-    cout << "2: Enter a adjective " << entries[1].type << ": ";
-    cin >> entries[1].input;
 
-    cout << entries[0].type << " is " << entries[0].input << " and " << entries[1].type << " is " << entries[1].input;
+    int entriesAmount = sizeof(entries) / sizeof(entries[0]);
 
-	(void)_getch();
-	return 0;
+    // Get all inputs with support for multi-word answers
+    for (int i = 0; i < entriesAmount; i++) {
+        cout << i + 1 << " [ENTER] " << entries[i].type << ": ";
+        getline(cin, entries[i].input);
+    }
+
+    // Print the story
+    cout << "\n--- Your Mad Lib Story ---\n\n";
+    cout << "In the heart of " << entries[0].input << ", a " << entries[1].input
+        << " " << entries[2].input << " stood tall. Suddenly, " << entries[3].input
+        << " appeared and decided to " << entries[4].input << " with a wild " << entries[5].input
+        << ". They all traveled to " << entries[6].input << ", where they met a mysterious "
+        << entries[7].input << " who would always " << entries[8].input << " with a magical "
+        << entries[9].input << ". But then, a rogue " << entries[10].input
+        << " stole " << entries[11].input << " and hid it in the " << entries[12].input
+        << ". Only the " << entries[13].input << " named " << entries[14].input
+        << " could save the day!\n";
+
+    _getch();
+    return 0;
 }
